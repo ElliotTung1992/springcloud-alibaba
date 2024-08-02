@@ -1,0 +1,19 @@
+
+
+spring:
+  application:
+    name: alibaba-order
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: fish
+        file-extension: yaml
+        username: fish
+        password: fish
+
+
+server:
+  port: 8080
