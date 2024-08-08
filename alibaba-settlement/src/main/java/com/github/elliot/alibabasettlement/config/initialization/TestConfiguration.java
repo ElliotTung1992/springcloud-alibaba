@@ -1,4 +1,4 @@
-package com.github.elliot.alibabasettlement.config;
+package com.github.elliot.alibabasettlement.config.initialization;
 
 public class TestConfiguration {
 
