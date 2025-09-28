@@ -1,0 +1,20 @@
+
+
+spring:
+  application:
+    name: gateway-center
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        enabled: true
+        username: nacos
+        password: nacos
+      config:
+        username: nacos
+        password: nacos
+        file-extension: yaml
+
+logging:
+  level:
+    cn.dev33: info

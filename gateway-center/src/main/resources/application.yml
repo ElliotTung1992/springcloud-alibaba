@@ -1,18 +1,9 @@
 
-
-
 server:
   port: 8999
 
 spring:
-  application:
-    name: gateway-center
   cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-        username: nacos
-        password: nacos
     gateway:
       discovery:
         locator:
@@ -22,9 +13,33 @@ spring:
           uri: lb://customer-center
           predicates:
             - Method=GET,POST,PUT,DELETE
+  main:
+    allow-bean-definition-overriding: true
+
+  # Sa-Token 核心配置
+sa-token:
+  # token名称（Header里的key）
+  token-name: Authorization
+  # token有效期（单位：秒）
+  timeout: 3600
+  # token过期后是否允许刷新
+  is-refresh-token: true
+  # 刷新token的有效时间（单位：秒）
+  refresh-token-timeout: 7200
+  # 排除拦截的路径（不用登录就能访问的接口）
+  exclude-path-patterns:
+   - /api/user/login # 登录接口
+   - /api/user/register # 注册接口
+   - /doc.html # Swagger文档（如果加了的话）
+   - /webjars/** # Swagger静态资源
+   - /v3/api-docs/** # Swagger接口文档
+  is-log: true # 是否在控制台打印日志，默认false
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
+
+
